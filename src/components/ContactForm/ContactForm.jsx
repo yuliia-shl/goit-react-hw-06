@@ -6,11 +6,6 @@ import { addContact } from '../../redux/contactsSlice';
 import { nanoid } from '@reduxjs/toolkit';
 
 const ContactForm = () => {
-  // const handleSubmit = (values, options) => {
-  //   const { name, number } = values;
-  //   handleAddContact(name, number);
-  //   options.resetForm();
-  // };
   const initValues = {
     name: '',
     number: '',
