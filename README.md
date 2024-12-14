@@ -17,11 +17,12 @@
 Нехай початковий стан Redux виглядає наступним чином.
 
 ```javascript
-{ contacts: {
-  items: []
-  },
+{
+  contacts: {
+      items: []
+    },
   filters: {
-    name: ""
+      name: ""
     }
 }
 ```
