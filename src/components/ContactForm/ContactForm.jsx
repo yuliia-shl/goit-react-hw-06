@@ -1,17 +1,34 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import s from './ContactForm.module.css';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contactsSlice';
+import { nanoid } from '@reduxjs/toolkit';
 
-const ContactForm = ({ handleAddContact }) => {
-  const handleSubmit = (values, options) => {
-    const { name, number } = values;
-    handleAddContact(name, number);
-    options.resetForm();
-  };
-
+const ContactForm = () => {
+  // const handleSubmit = (values, options) => {
+  //   const { name, number } = values;
+  //   handleAddContact(name, number);
+  //   options.resetForm();
+  // };
   const initValues = {
     name: '',
     number: '',
+  };
+  const dispatch = useDispatch();
+  const handleSubmit = (values, options) => {
+    const { name, number } = values;
+    if (!name.trim() || !number.trim()) {
+      alert('Required!');
+      return;
+    }
+    const newContactData = {
+      id: nanoid(),
+      name: name.trim(),
+      number: number.trim(),
+    };
+    dispatch(addContact(newContactData));
+    options.resetForm();
   };
 
   // Валідація

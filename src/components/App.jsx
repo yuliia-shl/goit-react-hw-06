@@ -6,7 +6,6 @@ import ContactList from './ContactList/ContactList';
 import ContactForm from './ContactForm/ContactForm';
 import SearchBox from './SearchBox/SearchBox';
 import { useEffect, useState } from 'react';
-import { nanoid } from 'nanoid';
 
 function App() {
   // Початковий стан
@@ -28,23 +27,23 @@ function App() {
   }, [contacts]);
 
   // Додати контакт
-  const handleAddContact = (name, number) => {
-    if (!name.trim() || !number.trim()) {
-      alert('Required!');
-      return;
-    }
-    const newContactData = {
-      id: nanoid(4),
-      name: name.trim(),
-      number: number.trim(),
-    };
-    setContacts(prev => [...prev, newContactData]);
-  };
+  // const handleAddContact = (name, number) => {
+  //   if (!name.trim() || !number.trim()) {
+  //     alert('Required!');
+  //     return;
+  //   }
+  //   const newContactData = {
+  //     id: nanoid(4),
+  //     name: name.trim(),
+  //     number: number.trim(),
+  //   };
+  //   setContacts(prev => [...prev, newContactData]);
+  // };
 
   // Видалити контакт
-  const handleDeleteContact = id => {
-    setContacts(prev => prev.filter(contact => contact.id !== id));
-  };
+  // const handleDeleteContact = id => {
+  //   setContacts(prev => prev.filter(contact => contact.id !== id));
+  // };
 
   // Шукати контакт
   const [searchValue, setSearchValue] = useState('');
@@ -62,11 +61,13 @@ function App() {
     <>
       <div className="mainWrap">
         <h1>Phonebook</h1>
-        <ContactForm handleAddContact={handleAddContact} />
+        <ContactForm
+        // handleAddContact={handleAddContact}
+        />
         <SearchBox searchValue={searchValue} handleSearch={handleSearch} />
         <ContactList
           filterContacts={filterContacts}
-          handleDeleteContact={handleDeleteContact}
+          // handleDeleteContact={handleDeleteContact}
         />
       </div>
     </>
